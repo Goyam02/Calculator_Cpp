@@ -1,13 +1,18 @@
 #include<iostream>
+#include<cmath>
+#include<limits>
+
 using namespace std;
 
 void DisplayMenu() {
     cout<<"Basic Calculator"<<endl;
-    cout<<"1. Addition"<<endl;
-    cout<<"2. Subtraction"<<endl;
-    cout<<"3. Multiplication"<<endl;
-    cout<<"4. Division"<<endl;
-    cout<<"5. Exit"<<endl;
+    cout<<"1. Addition (+)"<<endl;
+    cout<<"2. Subtraction (-)"<<endl;
+    cout<<"3. Multiplication (*)"<<endl;
+    cout<<"4. Division (/)"<<endl;
+    cout<<"5. Power (^)"<<endl;
+    cout<<"6. Modulus (%)"<<endl;
+    cout<<"7. Exit"<<endl;
     cout<<"Enter your choice: ";
 }
 
@@ -15,9 +20,16 @@ void calculator(){
     while(1){
         DisplayMenu();
         int choice;
-        cin>>choice;;
-        if(choice == 5){
-            cout<<"Exiting..."<<endl;
+        cin>>choice;
+        
+        if(cin.fail() || choice<1 || choice>7){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout<<"Invalid input! Please enter a number between 1-7."<<endl;
+            continue;
+        }
+        if(choice == 7){
+            cout<<"Exiting calculator..."<<endl;
             break;
         }
 
